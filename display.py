@@ -1,4 +1,11 @@
 import os
+import platform
+def clear_terminal():
+    mySystem = platform.system()
+    if mySystem == "Windows":
+        os.system("cls")
+    else:
+        os.system("clear")
 
 text_irblackjack = """
   _____ ______  _       ______  _       ___   _____  _   __   ___   ___   _____  _   __
@@ -28,14 +35,14 @@ ___  ___ _         _   _____
 """
 
 def login_menu():
-    os.system("clear")
+    clear_terminal()
     print(text_irblackjack)
     
     print("plz, login")
 
 myMenu = ["game start", "play minigames", "show my game record", "show user ranking", "log out", ""]
 def main_menu():
-    os.system("clear")
+    clear_terminal()
     print(text_irblackjack)
     
     myMenuLength = len(myMenu)
@@ -44,9 +51,9 @@ def main_menu():
     print(myMenu[myMenuLength-1])
 
 def blackjack():
-    os.system("clear")
+    clear_terminal()
     print(text_play)
 
 def minigame():
-    os.system("clear")
+    clear_terminal()
     print(text_minigame)
