@@ -16,6 +16,15 @@ text_irblackjack = """
   \\___/ \\_| \\_|   |___/ \\____/ \\_____/\\_| |_/ \\____/\\_| \\_/\\____/ \\_| |_/ \\____/\\_| \\_/
 """
 
+text_blackjack = """
+______  _       ___   _____  _   __   ___   ___   _____  _   __
+| ___ \\| |     / _ \\ /  __ \\| | / /  |_  | / _ \\ /  __ \\| | / /
+| |_/ /| |    / /_\\ \\| /  \\/| |/ /     | |/ /_\\ \\| /  \\/| |/ / 
+| ___ \\| |    |  _  || |    |    \\     | ||  _  || |    |    \\ 
+| |_/ /| |____| | | || \\__/\\| |\\  \\/\\__/ /| | | || \\__/\\| |\\  \\
+\\____/ \\_____/\\_| |_/ \\____/\\_| \\_/\\____/ \\_| |_/ \\____/\\_| \\_/
+"""
+
 text_play = """
 ______  _       ___  __   __  _  _  _ 
 | ___ \\| |     / _ \\ \\ \\ / / | || || |
@@ -34,16 +43,15 @@ ___  ___ _         _   _____
 \\_|  |_/|_||_| |_||_|  \\____/ \\__,_||_| |_| |_| \\___|
 """
 
-def login_menu():
+def login_menu(msg):
     clear_terminal()
-    print(text_irblackjack)
-    
-    print("plz, login")
+    print(text_blackjack)
+    print("[ " + msg + " ]")
 
 myMenu = ["game start", "play minigames", "show my game record", "show user ranking", "log out", ""]
 def main_menu():
     clear_terminal()
-    print(text_irblackjack)
+    print(text_blackjack)
     
     myMenuLength = len(myMenu)
     for i in range(myMenuLength-1):
