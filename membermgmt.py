@@ -4,6 +4,10 @@ import hashlib
 def hash_passwd(passwd):
     return hashlib.sha256(passwd.encode()).hexdigest()
 
+""" example
+username: test
+passwd: test 
+"""
 def try_login(inputName, inputPasswd, members):
     loginSuccess = False
 
@@ -20,15 +24,14 @@ def try_login(inputName, inputPasswd, members):
     else:
         print(inputName + " is not member in BLACKJACK")
     
-    return loginSuccess
+    return inputName, loginSuccess
 
 def load_members():
-    #file = open("/home/jmlee/Documents/Python-code/blackjack+/members.csv","r")
     file = open("members.csv","r")
     members = {}
     for line in file:
-        name, passwd, chips = line.strip('\n').split(',')
-        members[name] = (passwd, int(chips))
+        name, passwd, trys, wins, chips= line.strip('\n').split(',')
+        members[name] = (passwd, int(trys), int(wins), int(chips))
     file.close()
     return members
 

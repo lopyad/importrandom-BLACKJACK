@@ -1,8 +1,6 @@
 import display
 import membermgmt
-
-global isLogined
-isLogined = False
+import blackjack
 
 def play_blackjack():
 	display.blackjack()
@@ -28,23 +26,28 @@ def login(members):
 	passwd = input("password: ")
 
 	isLogined = membermgmt.try_login(name, passwd, members)
-	_ = input("wait..")
-	
+
+	global userName
+	userName = name	
+	_ = input("enter any key to continue...")
+
 def main():
 	global isLogined
+	global userName
+	isLogined = False
 	members = membermgmt.load_members()
 
 	while True:
 		if isLogined:
 			display.main_menu()
 
-			userInput = input()
+			userInput = input(":")
 			if not userInput in ["1", "2", "3", "4", "5"] or len(userInput)!=1:
 				continue
 			userInput = int(userInput)
 
 			if userInput == 1:
-				play_blackjack()
+				blackjack.blackjack_game(userName, members)
 			elif userInput == 2:
 				play_minigames()
 			elif userInput == 3:
@@ -57,5 +60,4 @@ def main():
 			login(members)
 
 main()
-
 
