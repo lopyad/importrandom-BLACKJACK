@@ -49,9 +49,10 @@ def login_menu(msg):
     print("[ " + msg + " ]")
 
 myMenu = ["game start", "play minigames", "show my game record", "show user ranking", "log out", ""]
-def main_menu():
+def main_menu(userName, userInfo):
     clear_terminal()
     print(text_blackjack)
+    print(f"[{userName}]")
     
     myMenuLength = len(myMenu)
     for i in range(myMenuLength-1):

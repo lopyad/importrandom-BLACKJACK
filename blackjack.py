@@ -90,7 +90,7 @@ def start_blackjack():
     print(user_h)
     input('Press enter...\n')
 
-    recorder.save_result()
+    #recorder.save_result()
 
     if d_score > 21:
         print('You win!')
