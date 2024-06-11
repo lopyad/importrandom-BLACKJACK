@@ -2,9 +2,9 @@ import display
 import membermgmt
 import blackjack
 
-def play_blackjack():
-	display.blackjack()
-	_ = input()
+# def play_blackjack():
+# 	display.blackjack()
+# 	_ = input()
 
 def play_minigames():
 	display.minigame()
@@ -47,6 +47,7 @@ def main():
 			userInput = int(userInput)
 
 			if userInput == 1:
+				display.blackjack()
 				blackjack.blackjack_game(userName, members)
 			elif userInput == 2:
 				play_minigames()

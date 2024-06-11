@@ -89,6 +89,9 @@ def start_blackjack():
     print(dealer_h)
     print(user_h)
     input('Press enter...\n')
+
+    recorder.save_result()
+
     if d_score > 21:
         print('You win!')
         return 1
@@ -143,6 +146,8 @@ def blackjack_game(member, members):
                     break
         result = start_blackjack()
         
+        
+
         if result > 0:
             wins += 1
         chips += int(bet)*result
