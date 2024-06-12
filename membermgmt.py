@@ -11,10 +11,17 @@ passwd: test
 """
 
 def login(members):
-    display.default("Hi, there!")
+    display.default("Hi, there! (If you have no account, plz input 'register' instead name)")
 
     name = input("username: ")
+
+    if name == "register":
+        add_newMember()
+        return False, None
+    
     passwd = input("password: ")
+
+    
 
     isLogined = try_login(name, passwd, members)
 
@@ -57,10 +64,19 @@ def load_members():
     return members
 
 def add_newMember():
-    display.login_menu("Input new member's name and passwd")
+    display.default("Input new member's name and passwd")
 
     name = input("username: ")
     passwd = input("password: ")
+
+    if name in ["", "register"] or "," in name:
+        print(f"You can't use '{name}' in BLACKJACK")
+        _ = input("enter any key to continue...")
+        return
+    elif len(name) > 10:
+        print(f"'{name}' is too long (max length is 10)")
+        _ = input("enter any key to continue...")
+        return
 
     try:
         file = open("members.csv","a")
