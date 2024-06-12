@@ -43,7 +43,7 @@ ___  ___ _         _   _____
 \\_|  |_/|_||_| |_||_|  \\____/ \\__,_||_| |_| |_| \\___|
 """
 
-def login_menu(msg):
+def default(msg):
     clear_terminal()
     print(text_blackjack)
     print("[ " + msg + " ]")
@@ -52,7 +52,7 @@ myMenu = ["game start", "play minigames", "show my game record", "show user rank
 def main_menu(userName, userInfo):
     clear_terminal()
     print(text_blackjack)
-    print(f"[{userName}]")
+    print(f"[{userName}, ◉ {userInfo[3]}]")
     
     myMenuLength = len(myMenu)
     for i in range(myMenuLength-1):

@@ -9,21 +9,39 @@ def hash_passwd(passwd):
 username: test
 passwd: test 
 """
+
+def login(members):
+    display.default("Hi, there!")
+
+    name = input("username: ")
+    passwd = input("password: ")
+
+    isLogined = try_login(name, passwd, members)
+
+    _ = input("enter any key to continue...")
+
+    return isLogined, name
+
 def try_login(inputName, inputPasswd, members):
     loginSuccess = False
+    passwdFailed = False
 
     for name in members.keys():
         if name == inputName:
             if members[name][0] == hash_passwd(inputPasswd):
                 loginSuccess = True
             else:
+                passwdFailed = True
                 print("incorrect passwd")
             break
             
     if loginSuccess:
         print("Welcome", inputName)
-    else:
+    elif not passwdFailed:
         print(inputName + " is not member in BLACKJACK")
+        # print("Do you want to create a new member profile to log in?")
+        # ans = ""
+        # while ans=="y" 
     
     return loginSuccess
 

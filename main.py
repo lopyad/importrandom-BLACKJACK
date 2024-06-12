@@ -1,38 +1,23 @@
 import display
 import membermgmt
 import blackjack
+import minigame
 
-def play_minigames():
-	display.minigame()
+def show_ranking(members):
+	display.default("Ranking")
+	print("check")
+	print("%")
+	for name in members.keys():
+		print(name, members[name])
 	_ = input()
-
-def show_game_record():
-	display.blackjack()
-	_ = input()
-
-def show_ranking():
-	display.blackjack()
-	_ = input()
-
-def login(members):
-	display.login_menu("Hi, there!")
-	global isLogined
-
-	name = input("username: ")
-	passwd = input("password: ")
-
-	isLogined = membermgmt.try_login(name, passwd, members)
-
-	global userName
-	userName = name	
-	_ = input("enter any key to continue...")
 
 def main():
-	global isLogined
-	global userName
+	#setup
+	global isLogined, userName
 	isLogined = False
 	members = membermgmt.load_members()
 
+	#loop
 	while True:
 		if isLogined:
 			display.main_menu(userName, members[userName])
@@ -47,15 +32,18 @@ def main():
 				blackjack.blackjack_game(userName, members)
 				members = membermgmt.load_members()
 			elif userInput == 2:
-				play_minigames()
+				display.minigame()
+				minigame.minigame_game(userName, members)
+				members = membermgmt.load_members()
 			elif userInput == 3:
-				show_game_record()
+				display.default()
+				_ = input()
 			elif userInput == 4:
-				show_ranking()
+				show_ranking(members)
 			elif userInput == 5:
 				isLogined = False
 		else:
-			login(members)
+			isLogined, userName = membermgmt.login(members)
 
 main()
 
