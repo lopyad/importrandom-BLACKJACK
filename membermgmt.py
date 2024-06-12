@@ -25,7 +25,7 @@ def login(members):
 
     isLogined = try_login(name, passwd, members)
 
-    _ = input("enter any key to continue...")
+    _ = input("press enter to continue...")
 
     return isLogined, name
 
@@ -71,11 +71,11 @@ def add_newMember():
 
     if name in ["", "register"] or "," in name:
         print(f"You can't use '{name}' in BLACKJACK")
-        _ = input("enter any key to continue...")
+        _ = input("press enter to continue...")
         return
     elif len(name) > 10:
         print(f"'{name}' is too long (max length is 10)")
-        _ = input("enter any key to continue...")
+        _ = input("press enter to continue...")
         return
 
     try:
@@ -88,7 +88,7 @@ def add_newMember():
         file.close()
 
 
-    _ = input("enter any key to continue...")
+    _ = input("press enter to continue...")
 
 #print(hash_passwd("test"))
 #add_newMember()

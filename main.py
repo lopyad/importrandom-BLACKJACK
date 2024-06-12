@@ -2,14 +2,7 @@ import display
 import membermgmt
 import blackjack
 import minigame
-
-def show_ranking(members):
-	display.default("Ranking")
-	print("check")
-	print("%")
-	for name in members.keys():
-		print(name, members[name])
-	_ = input()
+import recordmgmt
 
 def main():
 	#setup
@@ -39,7 +32,7 @@ def main():
 				display.default()
 				_ = input()
 			elif userInput == 4:
-				show_ranking(members)
+				recordmgmt.show_ranking(userName, members)
 			elif userInput == 5:
 				isLogined = False
 		else:
