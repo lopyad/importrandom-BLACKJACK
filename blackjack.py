@@ -1,6 +1,6 @@
 #import membermgmt
 import random
-#import recordemgmt
+import recordmgmt
 #import main
 
 def fresh_deck():
@@ -66,11 +66,11 @@ def start_blackjack():
             if score > 21 :
                 print('Bust!')
                 input('Press enter...\n')
-                return -1
+                return -1, (dealer_h, user_h, "Bust!")
             elif score == 21:
                 print('Black jack!')
                 input('Press enter...\n')
-                return 2
+                return 2, (dealer_h, user_h, "Black jack!")
             else:
                 continue
         else:
@@ -94,17 +94,17 @@ def start_blackjack():
 
     if d_score > 21:
         print('You win!')
-        return 1
+        return 1, (dealer_h, user_h, "You win!")
     else:
         if score > d_score:
             print('You win!')
-            return 1
+            return 1, (dealer_h, user_h, "You win!")
         elif score == d_score:
             print('Deuce')
-            return 0
+            return 0, (dealer_h, user_h, "Deuce")
         else:
             print('You lose...')
-            return -1
+            return -1, (dealer_h, user_h, "You lose...")
         
 def rewrite(members):
     content = ''
@@ -144,15 +144,27 @@ def blackjack_game(member, members):
                 else:
                     print('\nYou bet ' + str(bet) + ' chips!')
                     break
-        result = start_blackjack()
+        result, msgs = start_blackjack()
         
-        
-
         if result > 0:
             wins += 1
         chips += int(bet)*result
         if chips < 0:
             chips = 0
+
+        ###
+        msgs = (
+            (f"Bet : {bet}"),
+            msgs[0],
+            msgs[1],
+            msgs[2],
+            (f"Chip : {chips}")
+        )
+        #msgs.append(0, f"Bet : {bet}")
+        #msgs.append(f"Chip : {chips}")
+        recordmgmt.save_result(member, msgs)
+        ###
+
         print('Your chips : ' + str(chips) + ' left')
         answer = input('Want to play more? (Y/N)\n')
         while not(answer in ['Y', "N"]):

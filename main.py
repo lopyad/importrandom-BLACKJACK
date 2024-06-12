@@ -29,14 +29,15 @@ def main():
 				minigame.minigame_game(userName, members)
 				members = membermgmt.load_members()
 			elif userInput == 3:
-				display.default()
-				_ = input()
+				display.default("record")
+				recordmgmt.read_game_record(userName)
 			elif userInput == 4:
 				recordmgmt.show_ranking(userName, members)
 			elif userInput == 5:
 				isLogined = False
 		else:
 			isLogined, userName = membermgmt.login(members)
+			members = membermgmt.load_members()
 
 main()
 

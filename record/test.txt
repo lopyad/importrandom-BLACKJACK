@@ -1,0 +1,7 @@
+---
+Bet : 1500
+Dealer : ('Heart', 'A') ('Club', 4) ('Spade', 4) 
+User : ('Diamond', 4) ('Heart', 6) ('Heart', 'Q') 
+You win!
+Chip : 6620
+---

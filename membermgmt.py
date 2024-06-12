@@ -16,7 +16,7 @@ def login(members):
     name = input("username: ")
 
     if name == "register":
-        add_newMember()
+        add_newMember(members)
         return False, None
     
     passwd = input("password: ")
@@ -46,9 +46,6 @@ def try_login(inputName, inputPasswd, members):
         print("Welcome", inputName)
     elif not passwdFailed:
         print(inputName + " is not member in BLACKJACK")
-        # print("Do you want to create a new member profile to log in?")
-        # ans = ""
-        # while ans=="y" 
     
     return loginSuccess
 
@@ -63,18 +60,27 @@ def load_members():
         file.close()
     return members
 
-def add_newMember():
+def add_newMember(members):
     display.default("Input new member's name and passwd")
 
-    name = input("username: ")
+    name = input("username(only alphabet): ")
     passwd = input("password: ")
 
-    if name in ["", "register"] or "," in name:
+    if name in ["", "register"] or name.isalpha()==False:
         print(f"You can't use '{name}' in BLACKJACK")
+        _ = input("press enter to continue...")
+        return
+    elif members.get(name) != None:
+        print(f"{name} is already exist in BLACKJACK")
         _ = input("press enter to continue...")
         return
     elif len(name) > 10:
         print(f"'{name}' is too long (max length is 10)")
+        _ = input("press enter to continue...")
+        return
+    
+    if passwd == "":
+        print("plz input password")
         _ = input("press enter to continue...")
         return
 
